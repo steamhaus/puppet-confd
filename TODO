@@ -1,0 +1,5 @@
+
+- init scripts (systemd & sysv)
+- type confd::resource
+- optional managing of service confd
+

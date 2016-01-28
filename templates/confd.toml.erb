@@ -1,0 +1,44 @@
+<% if @backend -%>
+backend = "<%= @backend %>"
+<% end -%>
+<% if @client_cakeys -%>
+client_cakeys = "<%= @client_cakeys %>"
+<% end -%>
+<% if @client_cert -%>
+client_cert = "<% @client_cert %>"
+<% end -%>
+<% if @client_key -%>
+client_key = "<% @client_key %>"
+<% end -%>
+<% if @conf_dir -%>
+confdir = "<%= @conf_dir %>"
+<% end -%>
+<% if @log_level -%>
+log-level = "<%= @log__level %>"
+<% end -%>
+<% if @interval -%>
+interval = <%= @interval %>
+<% end -%>
+<% if @no_op -%>
+noop = <%= @no_op %>
+<% end -%>
+<% if @prefix -%>
+prefix = "<%= @prefix %>"
+<% end -%>
+<% if @scheme -%>
+scheme = "<%=  @scheme %>"
+<% end -%>
+<% if @srv_domain -%>
+srv_domain = "<% @srv_domain %>"
+<% end -%>
+<% if @sync_only -%>
+sync-only = "<%= @sync_only %>"
+<% end -%>
+<% if @watch -%>
+watch = "<%= @watch %>"
+<% end -%>
+nodes = [ <% @nodes.each do |node| -%>
+  "<%= node %>",
+<% end -%>
+]
+
