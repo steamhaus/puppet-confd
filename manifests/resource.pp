@@ -1,9 +1,55 @@
+# == Define: confd::resource
+#
+#  This define allows you to create or remove a confd resource.
+#
+# === Parameters
+#
+# [*templ*]
+#    String. The confd template file.
+#    Mandatory parameter (no defaults).
+#
+# [*keys*]
+#    String. The keys to watch for (in etcd, or consuld etc).
+#    Mandatory parameter (no defaults).
+#
+# [*dest*]
+#    String. Path to the generated file.
+#    Mandatory parameter (no defaults).
+# 
+# [*service_reload*]
+#    Bool. Wether to reload or not the 'confd' service after a config
+#    or template change. Default 'false'.
+
+# [*owner*]
+#    String. Owner of the generated file. Default 'undef'.
+#
+# [*group*]
+#    String. Owner group of the generated file. Default 'undef'.
+#
+# [*mode*]
+#    String. Mode of the generated file. Default 'undef'.
+#
+# [*check_cmd*]
+#    String. Command to validate the generated file after changes. Default 'undef'.
+#
+# [*reload_cmd*]
+#    String. Command to launch after the target is re-generated. Default 'undef'.
+#
+# [*prefix*]
+#    String. The string to prefix to keys.
+#
+# [*resources_path*]
+#    String. Where to place resources toml configs. Default '/etc/confd/conf.d'.
+#
+# [*templates_path*]
+#    String. Where to place resources' templates. Default '/etc/confd/templates'.
+#    
 define confd::resource (
   $templ,
   $keys,
   $dest,
 
-  $service_reload  = undef,
+  $service_reload  = false,
   $owner           = undef,
   $group           = undef,
   $mode            = undef,
@@ -18,7 +64,7 @@ define confd::resource (
   include confd::params
 
   validate_string($templ)
-  validte_hash($keys)
+  validate_array($keys)
   validate_string($dest)
   
   if $owner { validate_string($owner) }
@@ -40,16 +86,19 @@ define confd::resource (
 
   file { "${templates_path}/${name}.tmpl":
     ensure  => present,
-    content => "${templ}",
+    source  => "${templ}",
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
   }
 
-  #if $service_reload {
-  #  service { 'confd':
-  #    subscribe => 
-  #  }
-  #}
+  if str2boool($service_reload) {
+    service { 'confd':
+      subscribe => [
+          File["${templates_path}/${name}.tmpl"],
+          File["${resources_path}/${name}.toml"],
+      ]
+    }
+  }
 }
 

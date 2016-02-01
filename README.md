@@ -1,16 +1,16 @@
+confd
 
-Puppet module to install and configure the Kelsey Hightower's confd daemon.
-
-Work in progres.
-
+This is the confd module.
 
 License
 -------
 
-MIT
+
+Contact
+-------
 
 
 Support
 -------
 
-Please log tickets and issues at our [Github project](https://github.com/bpineau/puppet-confd)
+Please log tickets and issues at our [Projects site](http://projects.example.com)
