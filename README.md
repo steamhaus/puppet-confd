@@ -1,16 +1,15 @@
-confd
+puppet-confd
 
-This is the confd module.
+Puppet module to install and configure confd.
 
 License
 -------
 
-
-Contact
--------
-
+MIT.
+Some bits and inspiration from Alex Crowe (https://forge.puppetlabs.com/ajcrowe/confd)
 
 Support
 -------
 
-Please log tickets and issues at our [Projects site](http://projects.example.com)
+Please log tickets and issues at our [projects github](https://github.com/bpineau/puppet-confd)
+
