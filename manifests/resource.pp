@@ -92,7 +92,7 @@ define confd::resource (
     mode    => '0644',
   }
 
-  if str2boool($service_reload) {
+  if str2bool($service_reload) {
     service { 'confd':
       subscribe => [
           File["${templates_path}/${name}.tmpl"],
