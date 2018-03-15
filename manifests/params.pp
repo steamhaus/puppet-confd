@@ -1,7 +1,7 @@
 class confd::params {
   $install_method  = 'http' # 'package' or 'http'
   $package_name    = 'confd'
-  $confd_version   = '0.11.0'
+  $confd_version   = '0.15.0'
   $config_path     = '/etc/confd/confd.toml'
   $resources_path  = '/etc/confd/conf.d'
   $templates_path  = '/etc/confd/templates'
