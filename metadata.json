@@ -1,0 +1,21 @@
+{
+  "name": "bpineau-confd",
+  "version": "0.1.0",
+  "author": "Benjamin Pineau <ben.pineau@gmail.com>",
+  "summary": "Installs and configure confd daemon",
+  "license": "MIT",
+  "source": "https://github.com/bpineau/puppet-confd",
+  "project_page": "https://github.com/bpineau/puppet-confd",
+  "dependencies": [
+    {
+      "name": "puppetlabs/stdlib",
+      "version_requirement": ">= 2.0.0"
+    }
+  ],
+  "requirements": [
+    {
+      "name": "puppet",
+      "version_requirement": ">= 4.5.0"
+    }
+  ]
+}
